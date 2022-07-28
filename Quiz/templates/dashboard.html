@@ -13,8 +13,14 @@
     .table td {
         text-align: center;
     }
+
+    .page {
+    width: 99%;
+    }
+
 </style>
 
+<div class="page">
 <div id="confetti">
     <div class="row" style="margin-left:5%;">
     
@@ -28,7 +34,7 @@
               </div>
           <div class="row">
             <div class="col-8 col-sm-6" >
-                <img src="../../{{user.image}}" alt="" style="height: 25em; width: 25em; margin-left: 5%;">
+                <img src="../../{{user.image}}" alt="" style="height: 25em; width: 25em; margin-left: 10%;">
                 {% endfor%}
             </div>
             <div class="col-4 col-sm-6" style="margin-top: -5%;">
@@ -39,7 +45,7 @@
                       <td><img src="../static/avatars/stormtrooper.svg" alt="" width="100px" height="100px"><br><15</td>
                       <td><img src="../static/avatars/homer-simpson.svg" alt="" width="100px" height="100px"><br><20</td>
                       <td><img src="../static/avatars/walter-white.svg" alt="" width="100px" height="100px"><br><25</td>
-                      <td><img src="../static/avatars/iron-man.svg" alt="" width="100px" height="100px">30</td>
+                      <td><img src="../static/avatars/iron-man.svg" alt="" width="100px" height="100px"><br>30</td>
                     </tr>
                     <tr>
                         {% if score < 5  %}
@@ -143,6 +149,7 @@
     
       </div>
     </div>
+</div>
 <style>
 
     /* confetti effect */

@@ -8,10 +8,11 @@
 
   .quiz_select h1 {
     margin-bottom: 75px;
+    text-transform: uppercase; 
   }
 
   .quiz_select {
-    margin-top: 2em;
+    margin-top: 4em;
     margin-bottom: -2em;
   }
 
@@ -24,43 +25,28 @@
   }
 
   .card {
-    width: 200px;
-    height: 200px;
-    background: hsla(34, 100%, 60%, 0.572);
-    border-radius: 30px;
-    transform: skew(-3deg); /* OR transform: skew(-190deg); */
-    position: relative;
-    left: 20px;
-    margin-bottom: 5rem;
-    padding-bottom: 20em;
+    border: 4px solid purple;   
+    box-shadow: 1rem 0.7rem rgba(0,0,0,0.3);
   }
 
   #btn {
     border: 5px solid;
     border-image-slice: 7 12 14 5;
     background: var(--gradient) !important;
-    -webkit-background-clip: none !important;
     -webkit-text-fill-color: #fff !important;
     border-image-source: var(--gradient) !important;
-    transform: skew(-3deg); /* OR transform: skew(-190deg); */
     text-decoration: none;
     position: relative;
-    left: 80px;
   }
 
   #btn:hover,
   #btn:focus {
     background: var(--gradient) !important;
-    -webkit-background-clip: none !important;
     -webkit-text-fill-color: #fff !important;
     border: 5px solid #fff !important;
     box-shadow: #222 1px 0 10px;
   }
 
-  .logo {
-    position: relative;
-    bottom: 2rem;
-  }
 </style>
 
 {% endblock %}
@@ -68,7 +54,7 @@
 
 {% block body %}
 <div class = "quiz_select" id="quiz_select">
-  <h1>Please select your subject!</h1>
+  <h1>Instatute Interactive Quiz</h1>
 </div>
 
 <!-- Modal -->
@@ -103,16 +89,14 @@
   
         {% for i in quiz %}
         <div class="col-md-4">
-          <div class="card" style="width: 21rem;">
-            <div class="card-body">
-              <h5 class="card-title" style="text-align: center;">{{i.name}}</h5>
-              <br>
-              <p class="card-text">{{i.desc}}</p>
-              <br>
+          <div class="card mb-3" style="width: 21rem; height: 21rem">
+            <div class="card-body" style="text-align: center;">
+              <h5 class="card-head mb-4">{{i.name}}</h5>
+              <p>{{i.desc}}</p>
               <button data-bs-target="#exampleModal" data-bs-toggle="modal" data-time="{{i.time}}"
                 data-questions="{{i.number_of_questions}}" data-name="{{i.name}}" data-id="{{i.id}}" id="btn"
-                style="justify-content: center;" class="attempt btn mr-2 modal-button"><i class="fas fa-link"></i>Attempt
-                Quiz</button>
+                class="attempt btn mr-2 modal-button mt-5">Attempt Quiz
+              </button>
             </div>
           </div>
         </div>
