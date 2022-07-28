@@ -1,0 +1,282 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<script>
+ window.onload = function() {
+	if(!window.location.hash) {
+		window.location = window.location + '#loaded';
+		window.location.reload();
+	}
+} 
+</script>
+<style>
+    .table td {
+        text-align: center;
+    }
+
+    .page {
+    width: 99%;
+    }
+
+</style>
+
+<div class="page">
+<div id="confetti">
+    <div class="row" style="margin-left:5%;">
+    
+        <div class="col-sm-9">
+            <div class="jumbotron jumbotron-fluid" style="padding-left: 3.5%; margin-top: 1.5%;">
+                <div class="container">
+                {% for user in avatar %}
+                  <h1 class="display-4">Hello {{user.user}}!</h1>
+                  <p class="lead"></p>
+                </div>
+              </div>
+          <div class="row">
+            <div class="col-8 col-sm-6" >
+                <img src="../../{{user.image}}" alt="" style="height: 25em; width: 25em; margin-left: 10%;">
+                {% endfor%}
+            </div>
+            <div class="col-4 col-sm-6" style="margin-top: -5%;">
+                <table class="table">
+                    <tr><center>
+                      <td><img src="../static/avatars/scream.svg" alt="" width="100px" height="100px"><br><5</td>
+                      <td><img src="../static/avatars/jake.svg" alt="" width="100px" height="100px"><br><10</td>
+                      <td><img src="../static/avatars/stormtrooper.svg" alt="" width="100px" height="100px"><br><15</td>
+                      <td><img src="../static/avatars/homer-simpson.svg" alt="" width="100px" height="100px"><br><20</td>
+                      <td><img src="../static/avatars/walter-white.svg" alt="" width="100px" height="100px"><br><25</td>
+                      <td><img src="../static/avatars/iron-man.svg" alt="" width="100px" height="100px"><br>30</td>
+                    </tr>
+                    <tr>
+                        {% if score < 5  %}
+                    
+                  <div class="progress" style="height: 30px; width: 141%;">
+                      <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar"
+                      aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:10%">
+                          Level 1
+                      </div>
+                  </div>
+                  {% elif score >= 5 and score <= 10 %}
+                  <div class="progress" style="height: 30px; width: 141%;">
+                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                      aria-valuemin="0" aria-valuemax="100" style="width:20%">
+                          Level 2
+                      </div>
+                  </div>
+                  {% elif score >= 10 and score <= 15  %}
+                  <div class="progress" style="height: 30px; width: 141%;">
+                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                      aria-valuemin="0" aria-valuemax="100" style="width:40%">
+                          Level 3
+                      </div>
+                  </div>
+                  {% elif score >= 15 and score <= 20  %}
+                  <div class="progress" style="height: 30px; width: 141%;">
+                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                      aria-valuemin="0" aria-valuemax="100" style="width:60%">
+                          Level 4
+                      </div>
+                  </div>
+                  {% elif score >= 20 and score <= 25  %}
+                  <div class="progress" style="height: 30px; width: 141%;">
+                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                      aria-valuemin="0" aria-valuemax="100" style="width:80%">
+                          Level 5
+                      </div>
+                  </div>
+                  {% elif score == 30  %}
+                  <div class="progress" style="height: 30px; width: 141%;">
+                      <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar"
+                      aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                          Congratulations !!
+                  </div>
+                          {% endif %}
+                  </div>
+                    </tr>
+                  
+                  </table>
+    
+                <div class="card-group ">
+                    <div class="card text-white bg-primary mb-3 rounded" style="max-width: 100vw; margin-right: 5%;">
+                        <div class="card-header">Math Score<span class="badge bg-light text-dark" style="float: right">latest</span></div>
+                        <div class="card-body" style="text-align: center;">
+                          <h2 class="card-title">{{lasMath}}</h2>
+                          
+                        </div>
+                    </div>
+                    <div class="card text-white bg-primary mb-3 rounded" style="max-width: 100vw;">
+                        <div class="card-header">History Score<span class="badge bg-light text-dark" style="float: right">latest</span></div>
+                        <div class="card-body" style="text-align: center;">
+                          <h2 class="card-title">{{lashis}}</h2>
+                    
+                        </div>
+                    </div>
+                    <div class="card text-white bg-primary mb-3 rounded" style="max-width: 100vw; margin-left: 5%; margin-right: -41%;">
+                        <div class="card-header">English Score<span class="badge bg-light text-dark" style="float: right">latest</span></div>
+                        <div class="card-body" style="text-align: center;">
+                          <h2 class="card-title">{{laseng}}</h2>
+                          
+                        </div>
+                    </div>
+                </div>
+                <div class="card-group ">
+                  <div class="card text-dark bg-info mb-3 rounded" style="max-width: 100vw; margin-right: 5%;">
+                      <div class="card-header">Math Score<span class="badge bg-light text-dark" style="float: right">highest</span></div>
+                      <div class="card-body" style="text-align: center;">
+                        <h2 class="card-title">{{maxmath}}</h2>
+                        
+                      </div>
+                  </div>
+                  <div class="card text-dark bg-info mb-3 rounded" style="max-width: 100vw;">
+                      <div class="card-header">History Score<span class="badge bg-light text-dark" style="float: right">highest</span></div>
+                      <div class="card-body" style="text-align: center;">
+                        <h2 class="card-title">{{maxhis}}</h2>
+                  
+                      </div>
+                  </div>
+                  <div class="card text-dark bg-info mb-3 rounded" style="max-width: 100vw; margin-left: 5%; margin-right: -41%;">
+                      <div class="card-header">English Score<span class="badge bg-light text-dark" style="float: right">highest</span></div>
+                      <div class="card-body" style="text-align: center;">
+                        <h2 class="card-title">{{maxeng}}</h2>
+                        
+                      </div>
+                  </div>
+              </div>
+            </div>            
+          </div>
+        </div>
+        <canvas class="confetti" id="canvas"></canvas>
+    
+      </div>
+    </div>
+</div>
+<style>
+
+    /* confetti effect */
+    .confetti{
+        height: 90vh;
+        display: block;
+    
+    }
+    #confetti {
+        position: relative;
+    
+    }
+    
+    #confetti canvas{
+        position: absolute;
+        left: 5px;
+        
+    }
+    
+    
+    </style>
+
+<script>
+// define variable
+canvas = document.getElementById("canvas");
+ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+cx = ctx.canvas.width / 2;
+cy = ctx.canvas.height / 2;
+
+let confetti = [];
+const confettiCount = 300;
+const gravity = 0.5;
+const terminalVelocity = 5;
+const drag = 0.075;
+const colors = [
+{ front: 'red', back: 'darkred' },
+{ front: 'green', back: 'darkgreen' },
+{ front: 'blue', back: 'darkblue' },
+{ front: 'yellow', back: 'darkyellow' },
+{ front: 'orange', back: 'darkorange' },
+{ front: 'pink', back: 'darkpink' },
+{ front: 'purple', back: 'darkpurple' },
+{ front: 'turquoise', back: 'darkturquoise' }];
+
+
+//-----------Functions--------------
+resizeCanvas = () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    cx = ctx.canvas.width / 2;
+    cy = ctx.canvas.height / 2;
+};
+
+randomRange = (min, max) => Math.random() * (max - min) + min;
+
+initConfetti = () => {
+    for (let i = 0; i < confettiCount; i++) {
+    confetti.push({
+        color: colors[Math.floor(randomRange(0, colors.length))],
+        dimensions: {
+        x: randomRange(10, 20),
+        y: randomRange(10, 30) },
+
+        position: {
+        x: randomRange(0, canvas.width),
+        y: canvas.height - 1 },
+
+        rotation: randomRange(0, 2 * Math.PI),
+        scale: {
+        x: 1,
+        y: 1 },
+
+        velocity: {
+        x: randomRange(-25, 25),
+        y: randomRange(0, -50) } });
+
+
+    }
+};
+
+//---------Render-----------
+render = () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    confetti.forEach((confetto, index) => {
+    let width = confetto.dimensions.x * confetto.scale.x;
+    let height = confetto.dimensions.y * confetto.scale.y;
+
+    // Move canvas to position and rotate
+    ctx.translate(confetto.position.x, confetto.position.y);
+    ctx.rotate(confetto.rotation);
+
+    // Apply forces to velocity
+    confetto.velocity.x -= confetto.velocity.x * drag;
+    confetto.velocity.y = Math.min(confetto.velocity.y + gravity, terminalVelocity);
+    confetto.velocity.x += Math.random() > 0.5 ? Math.random() : -Math.random();
+
+    // Set position
+    confetto.position.x += confetto.velocity.x;
+    confetto.position.y += confetto.velocity.y;
+
+    // Delete confetti when out of frame
+    if (confetto.position.y >= canvas.height) confetti.splice(index, 1);
+
+    // Loop confetto x position
+    if (confetto.position.x > canvas.width) confetto.position.x = 0;
+    if (confetto.position.x < 0) confetto.position.x = canvas.width;
+
+    // Spin confetto by scaling y
+    confetto.scale.y = Math.cos(confetto.position.y * 0.1);
+    ctx.fillStyle = confetto.scale.y > 0 ? confetto.color.front : confetto.color.back;
+
+    // Draw confetti
+    ctx.fillRect(-width / 2, -height / 2, width, height);
+
+    // Reset transform matrix
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    });
+
+    
+    window.requestAnimationFrame(render);
+};
+
+//---------Execution--------
+initConfetti();
+render();
+</script>
+{% endblock %}
