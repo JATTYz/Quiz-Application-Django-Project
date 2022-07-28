@@ -28,5 +28,4 @@ urlpatterns = [
     path('delete_result/<int:myid>/', delete_result, name='delete_result'),
     path('dashboard/', ava, name='dashboard'),
     
-    
 ]
