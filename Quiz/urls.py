@@ -27,5 +27,4 @@ urlpatterns = [
     path('delete_question/<int:myid>/',delete_question, name='delete_question'),  
     path('delete_result/<int:myid>/', delete_result, name='delete_result'),
     path('dashboard/', ava, name='dashboard'),
-    
 ]
