@@ -12,23 +12,34 @@
   </head>
   <body class="d-flex flex-column min-vh-100">
     <nav class="navbar navbar-expand-lg navbar-light border border-secondary" style="background-color: AliceBlue;">
-        <div class="container-fluid">
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <img src="../static/images/logo.png" class="rounded float-left" alt="" width="60" height="60" />
-            <a class="text-decoration-none" href= "{% url 'home' %}"><h1 class="nav-link text-dark">Instatute</h1></a>
+     
+            <img src="../static/images/logo.png" class="navbar-nav rounded float-left " alt="" width="60" height="60" />
+            <a class="text-decoration-none" href= "{% url 'home' %}"><h1 class="nav-brand text-dark mx-3">Instatute</h1></a>
+            
+           
+            
+            <!-- The div tag is to show the hamberger Icon when collapse. It didn't work. Wait to get fixed -->
+            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button> -->
+            <!-- <div class="collapse navbar-collapse" id="navbarNav"> -->
               {% if user.is_authenticated %}
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'home' %}">Welcome {{request.user}}</a>
+              <ul class="navbar-nav px-4">
+                <li class="nav-item active">
+                  <a class="nav-link " href="{% url 'home' %}">Welcome {{request.user}}</a>
                 </li>
-                <li><a class="nav-link" href="/results/">Results</a></li>
-                <li><a class="nav-link" href="/dashboard/">Dashboard</a></li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/results/">Results</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/">Dashboard</a>
+                </li>
                 <li class="nav-item">
                   <a class="nav-link" href="/logout">Logout</a>
                 </li>
                 
                   {% if user.is_superuser or user.is_staff %}
-                  <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                
                     <ul class="navbar-nav">
                       
                       <li class="nav-item dropdown">
@@ -49,7 +60,7 @@
                         </ul>
                       </li>
                     </ul>
-                  </div>
+                
                   {% endif %}
                   {% if user.is_staff %}
                   <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
@@ -60,21 +71,20 @@
                   {% endif %}
                 </li>
               </ul>
-            </div>
+         
             {% endif %}
         </ul>
         {% else %}
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav ">
               
               <li class="nav-item">
-                <a class="nav-link" href="/login">Login</a>
+                <a class="nav-link px-4" href="/login">Login</a>
               </li>
             </ul>
             {% endif %}
-          </div>
-        </div>
+            <!-- </div> -->
       </nav>
-
+      
       {% block body %} {% endblock %}
       {% block content %}{% endblock content %}
 
@@ -92,12 +102,44 @@
     position: relative;
     right: 25px;
 }
+
+@media (max-width: 1200px) {
+  .footer-row .row  {
+      display: block;
+      margin-left: 30%;
+      margin-bottom: 50px;
+    }
+  }
+
+  @media (max-width: 770px) {
+    .footer-row .row p {
+      display: block;
+      margin-left: 10%;
+      margin-bottom: 50px;
+    }
+  }
+
+  @media (max-width: 450px) {
+    .footer-row .row {
+      display: block;
+      margin-left: 3%;
+      margin-bottom: 50px;
+    }
+  }
+
+  @media (max-width: 350px) {
+    .footer-row .row {
+      display: block;
+      margin-left: -10%;
+      margin-bottom: 50px;
+    }
+  }
 </style>
 
 <!-- Footer -->
 <footer class="mt-auto Footer border border-secondary"></footer><center>
   <div class="container">
-      <div class="row"">
+      <div class="row footer-row" >
             <p>&copy; Copyright Instatute 2022.</p> 
       </div>
       <div class="bottom-footer">

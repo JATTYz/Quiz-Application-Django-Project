@@ -7,13 +7,11 @@
   }
 
   .quiz_select h1 {
-    margin-bottom: 75px;
     text-transform: uppercase; 
   }
 
   .quiz_select {
     margin-top: 4em;
-    margin-bottom: -2em;
   }
 
   .attempt {
@@ -45,6 +43,41 @@
     -webkit-text-fill-color: #fff !important;
     border: 5px solid #fff !important;
     box-shadow: #222 1px 0 10px;
+  }
+
+  /* Row logic using ID instead of class as footer also has row variable */
+  /* Responsive to various devices & resolutions */
+
+  @media (max-width: 1200px) {
+    #row {
+      display: block;
+      margin-left: 30%;
+      margin-bottom: 50px;
+    }
+  }
+
+  @media (max-width: 770px) {
+    #row {
+      display: block;
+      margin-left: 10%;
+      margin-bottom: 50px;
+    }
+  }
+
+  @media (max-width: 450px) {
+    #row {
+      display: block;
+      margin-left: 3%;
+      margin-bottom: 50px;
+    }
+  }
+
+  @media (max-width: 350px) {
+    #row {
+      display: block;
+      margin-left: -10%;
+      margin-bottom: 50px;
+    }
   }
 
 </style>
@@ -83,13 +116,13 @@
   <br><br><br>
   
   <!-- cards -->
-  <div class="container">
+  <div class="container d-flex flex-wrap">
     <div class="container mx-auto mt-2">
-      <div class="row">
+      <div class="row" id="row">
   
         {% for i in quiz %}
         <div class="col-md-4">
-          <div class="card mb-3" style="width: 21rem; height: 21rem">
+          <div class="card" style="width: 21rem; height: 21rem">
             <div class="card-body" style="text-align: center;">
               <h5 class="card-head mb-4">{{i.name}}</h5>
               <p>{{i.desc}}</p>
