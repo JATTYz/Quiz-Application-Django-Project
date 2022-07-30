@@ -22,9 +22,8 @@
 
 <div class="page">
 <div id="confetti">
-    <div class="row" style="margin-left:5%;">
+    <div class="row">
     
-        <div class="col-sm-9">
             <div class="jumbotron jumbotron-fluid" style="padding-left: 3.5%; margin-top: 1.5%;">
                 <div class="">
                 {% for user in avatar %}
@@ -32,15 +31,15 @@
                 </div>
               </div>
           <div class="row">
-            <div class="col-7" >
+            <div class="col-4" >
                 <img src="../../{{user.image}}" alt="" style="height: 25em; width: 25em; margin-left: 10%;">
                 {% endfor%}
             </div>
-            <div class="col-lg-5 col-md-6 col-sm-12 " style="margin-top: -5%;">
+            <div class="col-lg-8 col-md-5 col-sm-12 " style="margin-top: -5%;">
                
                 {% if score < 5  %}
                     
-                <div class="progress mb-3" style="height: 30px; width: 141%;">
+                <div class="progress mb-3" style="height: 30px; width: 100%;">
                     <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar"
                     aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:10%">
                         Level 1
@@ -59,6 +58,7 @@
                     aria-valuemin="0" aria-valuemax="100" style="width:40%">
                         Level 3
                     </div>
+
                 </div>
                 {% elif score >= 15 and score <= 20  %}
                 <div class="progress mb-3" style="height: 30px; width: 141%;">
@@ -94,7 +94,7 @@
                 </div>
              
               
-                <div class="card-group mt-5" style="width:144%;">
+                <div class="card-group mt-5" style="width:100%;">
                     <div class="card text-white bg-primary mb-3 mx-4 rounded" >
                         <div class="card-header">Math Score<span class="badge bg-light text-dark" style="float: right">latest</span></div>
                         <div class="card-body" style="text-align: center;">
@@ -118,7 +118,7 @@
                     </div>
                 </div>
             
-                <div class="card-group" style="width:144%;">
+                <div class="card-group" style="width:100%;">
                   <div class="card text-dark bg-info mb-3 mx-4 rounded">
                       <div class="card-header">Math Score<span class="badge bg-light text-dark" style="float: right">highest</span></div>
                       <div class="card-body" style="text-align: center;">
@@ -141,11 +141,8 @@
                       </div>
                   </div>
               </div>
-
-           
             </div>            
           </div>
-        </div>
         <canvas class="confetti" id="canvas"></canvas>
     
       </div>
