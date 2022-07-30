@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{% block title %} Quiz {% endblock %}
+{% block css %}
+<style>
+ h1 { 
+  text-align: center;
+  }
+
+  .quiz_select h1 {
+    text-transform: uppercase; 
+  }
+
+  .quiz_select {
+    margin-top: 4em;
+  }
+
+  .attempt {
+    --gradient: linear-gradient(to left top, cornflowerblue 0%, purple 90%) !important;
+  }
+
+  body {
+    background: white;
+  }
+
+  .card {
+    border: 4px solid purple;   
+    box-shadow: 1rem 0.7rem rgba(0,0,0,0.3);
+  }
+
+  #btn {
+    border: 5px solid;
+    border-image-slice: 7 12 14 5;
+    background: var(--gradient) !important;
+    -webkit-text-fill-color: #fff !important;
+    border-image-source: var(--gradient) !important;
+    text-decoration: none;
+    position: relative;
+  }
+
+  #btn:hover,
+  #btn:focus {
+    background: var(--gradient) !important;
+    -webkit-text-fill-color: #fff !important;
+    border: 5px solid #fff !important;
+    box-shadow: #222 1px 0 10px;
+  }
+
+  /* Row logic using ID instead of class as footer also has row variable */
+  /* Responsive to various devices & resolutions */
+
+  @media (max-width: 1200px) {
+    #row {
+      display: block;
+      margin-left: 30%;
+      margin-bottom: 50px;
+    }
+  }
+
+  @media (max-width: 770px) {
+    #row {
+      display: block;
+      margin-left: 10%;
+      margin-bottom: 50px;
+    }
+  }
+
+  @media (max-width: 450px) {
+    #row {
+      display: block;
+      margin-left: 3%;
+      margin-bottom: 50px;
+    }
+  }
+
+  @media (max-width: 350px) {
+    #row {
+      display: block;
+      margin-left: -10%;
+      margin-bottom: 50px;
+    }
+  }
+
+</style>
+
+{% endblock %}
+{% load static %}
+
+{% block body %}
+<div class = "quiz_select" id="quiz_select">
+  <h1>Instatute Interactive Quiz</h1>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-title"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        {% if user.is_authenticated %}
+        <div class="modal-body" id="modal-body">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" id="start-quiz" class="btn btn-primary">Start Quiz</button>
+        </div>
+        {% else %}
+        <div class="modal-body">
+          <h3>Login first to start the quiz</h3>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <br><br><br>
+  
+  <!-- cards -->
+  <div class="container d-flex flex-wrap">
+    <div class="container mx-auto mt-2">
+      <div class="row" id="row">
+  
+        {% for i in quiz %}
+        <div class="col-md-4">
+          <div class="card" style="width: 21rem; height: 21rem">
+            <div class="card-body" style="text-align: center;">
+              <h5 class="card-head mb-4">{{i.name}}</h5>
+              <p>{{i.desc}}</p>
+              <button data-bs-target="#exampleModal" data-bs-toggle="modal" data-time="{{i.time}}"
+                data-questions="{{i.number_of_questions}}" data-name="{{i.name}}" data-id="{{i.id}}" id="btn"
+                class="attempt btn mr-2 modal-button mt-5">Attempt Quiz
+              </button>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  
+  {% endblock %}
+  {% block js %}
+  <script>
+    const modalBtns = [...document.getElementsByClassName('modal-button')]
+    const modalBody = document.getElementById('modal-body')
+    const modaltitle = document.getElementById('modal-title')
+    const startQuiz = document.getElementById('start-quiz')
+  
+    const url = window.location.href
+  
+    modalBtns.forEach(modalBtn => modalBtn.addEventListener('click', () => {
+      const id = modalBtn.getAttribute('data-id')
+      const name = modalBtn.getAttribute('data-name')
+      const numberOfQuestions = modalBtn.getAttribute('data-questions')
+      const time = modalBtn.getAttribute('data-time')
+  
+      modaltitle.innerHTML = `${name}`
+  
+      modalBody.innerHTML = `
+      The ${name} consists of ${numberOfQuestions} questions and hence it is of ${numberOfQuestions} marks. You will be getting exactly ${time} seconds to complete ${numberOfQuestions} multiple choice questions. After completing the questions you can click on the
+            submit button to get your score and to understand the concept in which you made a mistake.<br>
+            All the best for the quiz!!!.
+      `
+  
+      startQuiz.addEventListener('click', () => {
+        window.location.href = url + id
+      });
+    }));
+  </script>
+
+{% endblock %}
