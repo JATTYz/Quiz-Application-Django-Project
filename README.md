@@ -1,12 +1,12 @@
 # Django-Quiz-Application
 
 For demo, please use the following login: 
-
-``` 👾 Student Account --> User: Student | PW: 1234
-``` 👾 Teacher Account --> User: Teacher | PW: 1234
-``` 👾 Admin Account --> User: Admin | PW: Zxcvbnm,.?
-
------------------------------------------------------------------------
+```
+👾 Student Account --> User: Student | PW: 1234
+👾 Teacher Account --> User: Teacher | PW: 1234
+👽 Admin Account --> User: Admin | PW: Zxcvbnm,.?
+```
+------------------------------------------------------
 
 Hi, Team ! 😄 
 
