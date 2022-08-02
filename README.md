@@ -1,6 +1,10 @@
 # Django-Quiz-Application
 
-For demo, please use the following login: 
+Link
+http://jattyz.pythonanywhere.com
+
+
+For demo, please use the following to login: 
 ```
 👾 Student Account --> User: Student | PW: 1234
 👾 Teacher Account --> User: Teacher | PW: 1234
