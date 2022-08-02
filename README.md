@@ -1,8 +1,6 @@
 # Django-Quiz-Application
 
-Link
-http://jattyz.pythonanywhere.com
-
+Link: http://jattyz.pythonanywhere.com
 
 For demo, please use the following to login: 
 ```
