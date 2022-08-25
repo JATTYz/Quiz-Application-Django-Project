@@ -10,7 +10,7 @@ For demo, please use the following to login:
 ```
 ------------------------------------------------------
 
-Hi, Team ! 😄 
+Hi, Folks ! 😄 
 
 🔥 Welcome you guys to Github World 🔥
 
