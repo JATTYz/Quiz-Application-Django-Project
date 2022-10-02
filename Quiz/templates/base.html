@@ -15,14 +15,7 @@
      
             <img src="../static/images/logo.png" class="navbar-nav rounded float-left " alt="" width="60" height="60" />
             <a class="text-decoration-none" href= "{% url 'home' %}"><h1 class="nav-brand text-dark mx-3">Instatute</h1></a>
-            
-           
-            
-            <!-- The div tag is to show the hamberger Icon when collapse. It didn't work. Wait to get fixed -->
-            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button> -->
-            <!-- <div class="collapse navbar-collapse" id="navbarNav"> -->
+
               {% if user.is_authenticated %}
               <ul class="navbar-nav px-4">
                 <li class="nav-item active">
