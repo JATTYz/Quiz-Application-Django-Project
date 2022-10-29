@@ -1,4 +1,5 @@
 # Django-Quiz-Application
+<img src="https://github.com/JATTYz/portfolio/blob/gh-pages/static/media/QuizGame.9265aac8af1608445e61.png" />
 
 Link: http://jattyz.pythonanywhere.com
 
